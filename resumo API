@@ -1,0 +1,145 @@
+O material ensina o começo da criação de uma API RESTful usando Node.js, Express e MongoDB. A ideia é criar um servidor que recebe pedidos e devolve informações em formato JSON.
+
+O que é uma API?
+
+Uma API funciona como uma ponte entre programas.
+
+Por exemplo, em um aplicativo de cadastro:
+
+O usuário preenche nome e e-mail.
+O aplicativo envia essas informações para a API.
+A API salva os dados no banco.
+Depois, a API pode buscar, alterar ou excluir esse cadastro.
+
+Essas quatro operações formam o CRUD:
+
+| Operação | Significado | Exemplo |
+|---|---|---|
+| Create | Criar | Cadastrar um aluno |
+| Read | Ler | Consultar alunos |
+| Update | Atualizar | Alterar um cadastro |
+| Delete | Excluir | Apagar um cadastro |
+
+Tecnologias usadas
+
+| Tecnologia | Função |
+|---|---|
+| Node.js | Executa JavaScript no servidor |
+| Express | Facilita a criação das rotas da API |
+| MongoDB | Banco de dados que guarda as informações |
+| Mongoose | Faz a conexão entre o Node.js e o MongoDB |
+| Nodemon | Reinicia o servidor automaticamente quando o código muda |
+| Postman | Permite testar as rotas da API |
+
+Preparação do projeto
+
+Primeiro, crie uma pasta chamada APINODEJS. Dentro dela, execute:
+
+``bash
+npm init -y
+`
+
+Esse comando cria o arquivo package.json, que registra informações, comandos e pacotes utilizados pelo projeto.
+
+Depois, instale as dependências:
+
+`bash
+npm install express mongoose nodemon
+`
+
+No PDF aparece mongose, mas o nome correto é mongoose, com dois o.
+
+Código inicial
+
+Crie um arquivo chamado index.js:
+
+`js
+const express = require('express');
+
+const app = express();
+
+app.use(express.urlencoded({
+  extended: true,
+}));
+
+app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.json({ message: 'Oi Express' });
+});
+
+app.listen(3000, () => {
+  console.log('Servidor rodando na porta 3000');
+});
+`
+
+Explicação do código
+• require('express') carrega o pacote Express.
+• express() cria a aplicação.
+• app.use(express.urlencoded(...)) permite receber dados enviados por formulários.
+• app.use(express.json()) permite receber informações no formato JSON.
+• app.get('/') cria uma rota que responde a uma solicitação do tipo GET.
+• res.json(...) devolve uma resposta em JSON.
+• app.listen(3000) inicia o servidor na porta 3000.
+
+O que são rota, GET e JSON?
+
+A rota é um endereço da API. Neste exemplo, a rota é:
+
+`text
+http://localhost:3000/
+`
+
+GET é o tipo de solicitação usado para buscar informações.
+
+JSON é uma forma organizada de representar dados:
+
+`json
+{
+  "message": "Oi Express"
+}
+`
+
+Quando alguém acessar a rota inicial, o servidor responderá com essa mensagem.
+
+Como executar
+
+No package.json, o comando pode ser configurado assim:
+
+`json
+"scripts": {
+  "start": "nodemon index.js"
+}
+`
+
+Depois, execute:
+
+`bash
+npm start
+`
+
+O Nodemon iniciará o servidor e o reiniciará sempre que o arquivo for alterado.
+
+Para testar, abra no navegador:
+
+`text
+http://localhost:3000/
+`
+
+Também é possível utilizar o Postman, principalmente quando forem criadas rotas de cadastro, alteração e exclusão.
+
+O que o material realmente conclui?
+
+Apesar do título mencionar MongoDB, Mongoose e CRUD, as páginas fornecidas mostram principalmente a configuração inicial do Express. Ainda não aparecem claramente:
+
+• A conexão com o MongoDB;
+• A criação de um modelo com Mongoose;
+• As rotas para cadastrar, consultar, atualizar e excluir dados.
+
+Portanto, pense neste conteúdo como o primeiro passo: preparar e ligar o servidor. O fluxo é:
+
+`text
+Cliente ou Postman -> rota do Express -> processamento -> resposta JSON
+``
+
+A principal ideia para guardar é: Node.js executa o servidor, Express organiza as rotas, MongoDB guarda os dados e Mongoose liga o código ao banco de dados.

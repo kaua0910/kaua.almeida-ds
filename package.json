@@ -8,6 +8,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+<<<<<<< HEAD
   "description": "",
   "dependencies": {
     "cors": "^2.8.6",
@@ -17,4 +18,12 @@
     "mysql2": "^3.24.6",
     "nodemon": "^3.1.0"
   }
+=======
+  "description": "", 
+  "dependencies": {
+    "express": "^4.19.2", 
+"mongoose": "^8.3.1", 
+"nodemon": "^3.1.0"
+}
+>>>>>>> 3512d3a739aaef0005eb4735a4db759cb9a020a0
 }
